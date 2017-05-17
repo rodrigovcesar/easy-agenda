@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:EasyAgenda"
-             x:Class="EasyAgenda.MainPage">
+             xmlns:local="clr-namespace:Pages"
+             x:Class="Pages.MainPage">
 
 	<Label Text="Welcome to Xamarin Forms!" 
            VerticalOptions="Center" 

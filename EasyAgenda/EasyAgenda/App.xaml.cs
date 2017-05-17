@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Pages;
 
 namespace EasyAgenda
 {
@@ -12,8 +13,7 @@ namespace EasyAgenda
         public App()
         {
             InitializeComponent();
-
-            MainPage = new EasyAgenda.MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

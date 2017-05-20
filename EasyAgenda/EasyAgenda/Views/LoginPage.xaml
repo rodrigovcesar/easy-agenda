@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Views"
+             x:Class="Views.LoginPage">
+
+    <StackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand">
+        <Label Text="Easy Agenda" TextColor="Black" FontSize="Medium"/>
+        <Button Command="{Binding LoginCommand}" Text="Logar com Facebook" BackgroundColor="Blue" FontSize="Medium"
+                TextColor="White"></Button>
+    </StackLayout>
+
+</ContentPage>

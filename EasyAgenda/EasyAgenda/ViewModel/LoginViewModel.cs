@@ -12,20 +12,14 @@ using Xamarin.Forms;
 
 namespace EasyAgenda.ViewModel
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
         private AzureService _azureService;
         private INavigation _navigation;
 
-        public ICommand LoginCommand { get; }
-        public bool IsBusy { get; set; }
+        public ICommand LoginCommand { get; }        
 
-        public LoginViewModel()
-        {
-            _azureService = DependencyService.Get<AzureService>();
-            LoginCommand = new Command(async () => await ExecuteLoginCommandAsync());
-        }
-
+   
         public LoginViewModel(INavigation navigation)
         {
             _navigation = navigation;

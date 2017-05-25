@@ -3,13 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Views"
              x:Class="Views.LoginPage">
-
-    <StackLayout
-        HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand">
-        <Label Text="Easy Agenda" TextColor="Black" FontSize="Medium"/>
-        <Button Command="{Binding LoginCommand}" Text="Logar com Facebook" BackgroundColor="Blue" FontSize="Medium"
-                TextColor="White"></Button>
-    </StackLayout>
-
+    <RelativeLayout>
+        <StackLayout
+            x:Name="stck1"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="StartAndExpand"        
+            BackgroundColor="{StaticResource BackgroundDefault}"
+            RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+            RelativeLayout.HeightConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=.5}">
+            <Image Source="phonebook.png" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </StackLayout>
+        <StackLayout
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+            RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"            
+            RelativeLayout.YConstraint=
+            "{ConstraintExpression Type=RelativeToView, 
+                                        Property=Height, 
+                                        Factor=1, 
+                                        ElementName=stck1,
+                                        Constant=30}">
+            <Image Source="facebook.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </StackLayout>
+    </RelativeLayout>
 </ContentPage>

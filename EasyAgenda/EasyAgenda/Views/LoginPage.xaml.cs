@@ -15,8 +15,7 @@ namespace Views
         public LoginPage()
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel(Navigation);
-            
+            BindingContext = new LoginViewModel(Navigation);            
         }
     }
 }

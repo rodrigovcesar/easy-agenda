@@ -1,4 +1,5 @@
 ﻿using EasyAgenda.Helpers;
+using EasyAgenda.Services;
 using EasyAgenda.UWP;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 [assembly: Xamarin.Forms.Dependency(typeof(SocialAuthentication))]
 namespace EasyAgenda.UWP
 {
-    public class SocialAuthentication
+    public class SocialAuthentication : IAuthenticate
     {
         public async Task<MobileServiceUser> LoginAsync(MobileServiceClient client, MobileServiceAuthenticationProvider provider, IDictionary<string, string> parameters = null)
         {

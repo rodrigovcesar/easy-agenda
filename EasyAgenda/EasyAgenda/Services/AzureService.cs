@@ -1,6 +1,11 @@
-﻿using EasyAgenda.Helpers;
+﻿#define OFFLINE_SYNC_ENABLED
+using EasyAgenda.Helpers;
+using EasyAgenda.Models;
 using EasyAgenda.Services;
 using Microsoft.WindowsAzure.MobileServices;
+using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
+using Microsoft.WindowsAzure.MobileServices.Sync;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +21,12 @@ namespace EasyAgenda.Services
         static readonly string AppUrl = AppSettings.AZURE_MOBILE_SERVICE_URL;
         public MobileServiceClient Client { get; set; } = null;
         public static bool UseAuth { get; set; } = false;
+        public UsuarioManager Manager { get; set; }
+
+        public AzureService()
+        {
+            Initialize();
+        } 
 
         public void Initialize()
         {
@@ -27,11 +38,13 @@ namespace EasyAgenda.Services
                     MobileServiceAuthenticationToken = Settings.AuthToken
                 };
             }
+
+            Manager = new UsuarioManager(Client);                   
         }
 
         public async Task<bool> LoginAsync()
         {
-            Initialize();
+            //Initialize();
             var auth = DependencyService.Get<IAuthenticate>();
             var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Facebook);
 
@@ -55,5 +68,8 @@ namespace EasyAgenda.Services
 
             return true;
         }
+
+        
+
     }
 }

@@ -2,9 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyAgenda.Views.MainPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adicionar" Command="{Binding AdicionarCommand}"  Order="Secondary"/>
+        <ToolbarItem Text="Buscar" Order="Secondary"/>        
+    </ContentPage.ToolbarItems>
+
+    <ListView 
+        ItemsSource="{Binding Usuarios}"
+              HasUnevenRows="True"
+        ItemSelected="ListView_OnItemSelected"   
+        IsPullToRefreshEnabled="true"
+        IsRefreshing="{Binding IsBusy}"
+        RefreshCommand="{Binding LoadListCommand}"
+            >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Padding="20">
+                        <Label Text="{Binding Nome}" TextColor="Black" Font="Large"/>
+                        <Label Text="{Binding Email}" TextColor="Gray" Font="Medium"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>

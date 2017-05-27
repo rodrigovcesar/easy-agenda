@@ -4,15 +4,71 @@
              x:Class="EasyAgenda.App">
 	<Application.Resources>
         <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:Double" Android="45" iOS="25" WinPhone="25" x:Key="EntryHeight" />
 
-            <!-- Application resource dictionary -->
+            <!-- Cores -->
             <Color x:Key="BackgroundDefault">#212A36</Color>
+            <Color x:Key="AppButtonColor">#00A483</Color>
+            <Color x:Key="Background_ListView">#3AB54A</Color>
+
+            <!-- Barra de navegação -->
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource BackgroundDefault}"/>
-                <Setter Property="BarTextColor" Value="Color.White"/>
-            </Style>           
-                       
-          
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+
+            <!-- Estilo dos botões -->
+            <Style TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="15" />                
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="HeightRequest" Value="45" />
+                <Setter Property="BackgroundColor" Value="{StaticResource AppButtonColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+
+            <!-- Labels -->
+            <Style x:Key="Titulo_Label" TargetType="Label">
+                <!--<Setter Property="BackgroundColor" Value="Transparent" />-->
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="HelveticaNeue-Bold" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+            <Style x:Key="Label_Detalhes" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="HelveticaNeue"/>                
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                
+            </Style>
+
+            <!-- BoxView Divisor -->
+            <Style x:Key="Divisor_BoxView" TargetType="BoxView">
+                <Setter Property="Color" Value="White" />
+                <Setter Property="HeightRequest" Value="0.5" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+            <!-- Entries Formulário -->
+
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="HelveticaNeue-Medium" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HeightRequest" Value="{StaticResource EntryHeight}"/>
+            </Style>
+   
+
+
         </ResourceDictionary>
 
     </Application.Resources>

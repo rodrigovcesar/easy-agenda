@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EasyAgenda.Views.MainPage">
+             x:Class="EasyAgenda.Views.MainPage"
+             BackgroundColor="{StaticResource BackgroundDefault}"
+             Title="AGENDA">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Adicionar" Command="{Binding AdicionarCommand}"  Order="Secondary"/>
-        <ToolbarItem Text="Buscar" Order="Secondary"/>        
-    </ContentPage.ToolbarItems>
+        <ToolbarItem Icon="add.png" Command="{Binding AdicionarCommand}"/>             
+    </ContentPage.ToolbarItems>    
 
     <ListView 
         ItemsSource="{Binding Usuarios}"
@@ -13,14 +14,21 @@
         ItemSelected="ListView_OnItemSelected"   
         IsPullToRefreshEnabled="true"
         IsRefreshing="{Binding IsBusy}"
-        RefreshCommand="{Binding LoadListCommand}"
-            >
+        RefreshCommand="{Binding LoadListCommand}"        
+        >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Padding="20">
-                        <Label Text="{Binding Nome}" TextColor="Black" Font="Large"/>
-                        <Label Text="{Binding Email}" TextColor="Gray" Font="Medium"/>
+                    <StackLayout Padding="10" BackgroundColor="#9BA2AA" Margin="5">
+                        <Label Text="{Binding Nome}" Style="{StaticResource Titulo_Label}"/>
+                        <BoxView Style="{StaticResource Divisor_BoxView}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="phone.png" HeightRequest="15" WidthRequest="15" />
+                            <Label Text="(11)2959-8505" Style="{StaticResource Label_Detalhes}"/>
+                            <BoxView BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" HeightRequest="15"></BoxView>
+                            <Image Source="email.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="End" />
+                            <Label Text="teste@teste.com.br" HorizontalOptions="End"></Label>
+                        </StackLayout>                        
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

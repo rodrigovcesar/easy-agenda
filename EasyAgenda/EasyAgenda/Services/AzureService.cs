@@ -45,31 +45,38 @@ namespace EasyAgenda.Services
         public async Task<bool> LoginAsync()
         {
             //Initialize();
-            var auth = DependencyService.Get<IAuthenticate>();
-            var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Facebook);
-
-            if (user == null)
+            try
             {
-                Settings.AuthToken = string.Empty;
-                Settings.UserId = string.Empty;
+                var auth = DependencyService.Get<IAuthenticate>();
+                var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Facebook);
 
-                Device.BeginInvokeOnMainThread(async () =>
+                if (user == null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Ops", "Não conseguimos efetuar o login, tente novamente", "OK");
-                });
-
-                return false;
-            }
-            else
+                    Settings.AuthToken = string.Empty;
+                    Settings.UserId = string.Empty;
+                    return Erro();
+                    
+                }
+                else
+                {
+                    Settings.AuthToken = user.MobileServiceAuthenticationToken;
+                    Settings.UserId = user.UserId;
+                    return true;
+                }
+            } catch (InvalidOperationException)
             {
-                Settings.AuthToken = user.MobileServiceAuthenticationToken;
-                Settings.UserId = user.UserId;
+                return Erro();
             }
-
-            return true;
         }
 
-        
+        private bool Erro()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await App.Current.MainPage.DisplayAlert("Ops", "Não conseguimos efetuar o login, tente novamente", "OK");
+            });
 
+            return false;
+        }
     }
 }

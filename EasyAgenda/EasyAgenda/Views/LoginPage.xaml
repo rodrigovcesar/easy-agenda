@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Views"
-             x:Class="Views.LoginPage">
+             x:Class="Views.LoginPage"
+             Title="EASY AGENDA">
     <RelativeLayout>
         <StackLayout
             x:Name="stck1"
@@ -17,7 +18,9 @@
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
                                         Factor=.5}">
-            <Image Source="phonebook.png" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            <Image Source="phonebook.png" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+
         </StackLayout>
         <StackLayout
           HorizontalOptions="FillAndExpand"
@@ -33,6 +36,8 @@
                                         ElementName=stck1,
                                         Constant=30}">
             <Image Source="facebook.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Command="{Binding LoginCommand}" Text="Logar com Facebook"/>
+            
         </StackLayout>
     </RelativeLayout>
 </ContentPage>

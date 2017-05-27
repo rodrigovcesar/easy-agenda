@@ -32,7 +32,7 @@ namespace EasyAgenda.ViewModel
             if (IsBusy || !(await LoginAsync()))
                 return;
             else
-            {
+            {               
                 var mainPage = new MainPage();
                 await _navigation.PushAsync(mainPage);
                 RemovePageFromStack();
@@ -51,8 +51,7 @@ namespace EasyAgenda.ViewModel
         }
 
         public Task<bool> LoginAsync()
-        {
-            IsBusy = true;
+        {            
             if (Settings.IsLoggedIn)
                 return Task.FromResult(true);
 

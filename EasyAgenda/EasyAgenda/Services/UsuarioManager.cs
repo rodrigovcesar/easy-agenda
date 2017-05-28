@@ -79,7 +79,6 @@ namespace EasyAgenda.Services
                 {
                     await Client.SyncContext.PushAsync();
                     await _usuarioSyncTable.PullAsync("allUsuarios", _usuarioSyncTable.CreateQuery());
-                    
                 }
             }
             catch (MobileServicePushFailedException ex)
@@ -92,8 +91,9 @@ namespace EasyAgenda.Services
         {
             try
             {
-                if (string.IsNullOrEmpty(usuario.Id))                {
-                    
+                if (string.IsNullOrEmpty(usuario.Id))
+                {
+
                     await _usuarioSyncTable.InsertAsync(usuario);
                 }
                 else
@@ -116,6 +116,27 @@ namespace EasyAgenda.Services
                 //Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
             }
         }
+
+        public async Task<bool> DeleteUsuario(Usuario usuario)
+        {
+            try
+            {
+                var usuarioToDelete = await _usuarioSyncTable.LookupAsync(usuario.Id);
+                if (usuarioToDelete != null)
+                {
+                    await _usuarioSyncTable.DeleteAsync(usuario);
+                    await SyncUsuario();
+                    return true;
+                }
+            }
+            catch (MobileServicePushFailedException ex)
+            {
+                Errors(ex);
+            }
+            return false;
+        }
+
+
 
         private async void Errors(MobileServicePushFailedException exc)
         {

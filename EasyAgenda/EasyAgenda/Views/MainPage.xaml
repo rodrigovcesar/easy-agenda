@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyAgenda.Views.MainPage"
              BackgroundColor="{StaticResource BackgroundDefault}"
-             Title="AGENDA">
+             Title="AGENDA"
+             xmlns:controls="clr-namespace:EasyAgenda.Controls; assembly:EasyAgenda">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="add.png" Command="{Binding AdicionarCommand}"/>             
     </ContentPage.ToolbarItems>    
@@ -18,19 +19,19 @@
         >
         <ListView.ItemTemplate>
             <DataTemplate>
-                <ViewCell>
+                <controls:MyListItemCell>
                     <StackLayout Padding="10" BackgroundColor="#9BA2AA" Margin="5">
                         <Label Text="{Binding Nome}" Style="{StaticResource Titulo_Label}"/>
                         <BoxView Style="{StaticResource Divisor_BoxView}"/>
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="phone.png" HeightRequest="15" WidthRequest="15" />
+                            <Image Source="phone.png" HeightRequest="15" WidthRequest="15"/>
                             <Label Text="(11)2959-8505" Style="{StaticResource Label_Detalhes}"/>
                             <BoxView BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" HeightRequest="15"></BoxView>
                             <Image Source="email.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="End" />
                             <Label Text="teste@teste.com.br" HorizontalOptions="End"></Label>
                         </StackLayout>                        
                     </StackLayout>
-                </ViewCell>
+                </controls:MyListItemCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

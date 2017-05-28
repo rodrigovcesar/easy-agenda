@@ -1,5 +1,6 @@
 ﻿using EasyAgenda.Models;
 using EasyAgenda.Services;
+using EasyAgenda.ViewModel;
 using EasyAgenda.Views;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+[assembly: Xamarin.Forms.Dependency(typeof(MainViewModel))]
 namespace EasyAgenda.ViewModel
 {
     public class MainViewModel : BaseViewModel
@@ -19,7 +21,8 @@ namespace EasyAgenda.ViewModel
         
         public Command AdicionarCommand { get; }
         public ObservableCollection<Usuario> Usuarios { get; private set; }        
-        public Command LoadListCommand { get; }           
+        public Command LoadListCommand { get; }  
+                
 
         public MainViewModel()
         {
@@ -33,7 +36,8 @@ namespace EasyAgenda.ViewModel
             LoadListCommand = new Command(async () =>
             await ExecuteLoadListCommandAsync()
             );
-            LoadListCommand.Execute(null);              
+            LoadListCommand.Execute(null);
+                             
         }
 
         public async Task ExecuteLoadListCommandAsync()
@@ -50,7 +54,17 @@ namespace EasyAgenda.ViewModel
             IsBusy = false;
         }
 
+        public async Task ApagarUsuarioAsync(Usuario usuario)
+        {
+            IsBusy = true;
+            if (await _usuarioManager.DeleteUsuario(usuario))
+            {
+                Usuarios.Remove(usuario);
+                OnPropertyChanged(nameof(Usuarios));
+            }
+            IsBusy = false;
 
+        }
         
     }
 }

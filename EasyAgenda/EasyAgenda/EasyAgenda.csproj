@@ -38,6 +38,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MyEntry.cs" />
+    <Compile Include="Controls\MyListItemCell.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Services\UsuarioManager.cs" />
@@ -154,6 +156,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

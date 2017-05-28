@@ -36,5 +36,20 @@ namespace EasyAgenda.Views
                 Navigation.PushAsync(new EditAddPage(e.SelectedItem as Usuario));
             }
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Usuario>(this, "UsuarioApagar",
+                async (usuario) => {
+                    await this.ViewModel.ApagarUsuarioAsync(usuario);
+                });            
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Usuario>(this, "UsuarioApagar");
+        }
     }
 }

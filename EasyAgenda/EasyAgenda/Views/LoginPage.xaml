@@ -9,7 +9,7 @@
             x:Name="stck1"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="StartAndExpand"        
-            BackgroundColor="{StaticResource BackgroundDefault}"
+            
             RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,

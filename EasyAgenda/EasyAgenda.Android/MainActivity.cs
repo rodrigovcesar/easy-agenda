@@ -10,7 +10,7 @@ using Android.OS;
 
 namespace EasyAgenda.Droid
 {
-    [Activity(Label = "EasyAgenda", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "EasyAgenda", Icon = "@drawable/phonebook", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         // Create a new instance field for this activity. 

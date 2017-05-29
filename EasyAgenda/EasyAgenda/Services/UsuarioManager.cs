@@ -30,8 +30,7 @@ namespace EasyAgenda.Services
             try
             {
                 Store = new MobileServiceSQLiteStore(AppSettings.LOCAL_STORAGE);
-                Store.DefineTable<Usuario>();                
-
+                Store.DefineTable<Usuario>();
                 await Client.SyncContext.InitializeAsync(Store);
                 _usuarioSyncTable = Client.GetSyncTable<Usuario>();
 
@@ -100,17 +99,11 @@ namespace EasyAgenda.Services
                     {
                         await _usuarioSyncTable.UpdateAsync(usuario);
                     }
-                }
-
-                await SyncUsuario();
+                }               
             }
             catch (MobileServicePushFailedException ex)
             {
-                Errors(ex);
-                //System.Diagnostics.Debug.WriteLine(ex);
-                //string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
-
-                //Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
+                Errors(ex);                
             }
         }
 

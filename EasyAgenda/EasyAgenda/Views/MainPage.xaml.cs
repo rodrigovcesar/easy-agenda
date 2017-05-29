@@ -21,13 +21,7 @@ namespace EasyAgenda.Views
             InitializeComponent();
             BindingContext = new MainViewModel(Navigation);            
         }
-
-        //protected override async void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    if (ViewModel != null)
-        //        await ViewModel.LoadList();
-        //}
+ 
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -43,13 +37,16 @@ namespace EasyAgenda.Views
             MessagingCenter.Subscribe<Usuario>(this, "UsuarioApagar",
                 async (usuario) => {
                     await this.ViewModel.ApagarUsuarioAsync(usuario);
-                });            
+                });
+            ViewModel.LoadListCommand.Execute(null);
+
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Usuario>(this, "UsuarioApagar");
+            
         }
     }
 }

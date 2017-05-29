@@ -23,12 +23,12 @@ namespace EasyAgenda.Controls
                 Command = new Command(() =>
                 {
                     MessagingCenter.Send((Usuario)BindingContext, "UsuarioApagar");
-                }
-                )
+                })
 
             };
             //deleteOption.Clicked += deleteOption_Clicked;
-            ContextActions.Add(deleteOption);                   
+            ContextActions.Add(deleteOption);   
+                            
             
 
         }

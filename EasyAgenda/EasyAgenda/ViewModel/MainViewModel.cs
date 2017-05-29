@@ -2,16 +2,14 @@
 using EasyAgenda.Services;
 using EasyAgenda.ViewModel;
 using EasyAgenda.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(MainViewModel))]
+using Xamarin.Forms;
+using System;
+using EasyAgenda.Helpers;
+
 namespace EasyAgenda.ViewModel
 {
     public class MainViewModel : BaseViewModel
@@ -22,6 +20,7 @@ namespace EasyAgenda.ViewModel
         public Command AdicionarCommand { get; }
         public ObservableCollection<Usuario> Usuarios { get; private set; }        
         public Command LoadListCommand { get; }  
+        public Command SobreCommand { get; }
                 
 
         public MainViewModel(INavigation nav): base(nav)
@@ -36,13 +35,19 @@ namespace EasyAgenda.ViewModel
             LoadListCommand = new Command(async () =>
             await ExecuteLoadListCommandAsync()
             );
+            SobreCommand = new Command(ExibirSobreAsync);
             LoadListCommand.Execute(null);
                              
         }
 
+        private async void ExibirSobreAsync()
+        {
+            await DisplayAlert("SOBRE", $"{AppSettings.VERSAO}\n{AppSettings.AUTOR}", "Ok");
+        }
+
         public async Task ExecuteLoadListCommandAsync()
         {
-            IsBusy = true;            
+            IsBusy = true;                        
             var usuarios = await _usuarioManager.GetUsuarioListAsync();
             System.Diagnostics.Debug.WriteLine("FOUND {0} Usuários", usuarios.LongCount());
             Usuarios.Clear();

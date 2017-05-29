@@ -51,7 +51,13 @@ namespace EasyAgenda.ViewModel
             {
                 if (page.GetType() == typeof(T))
                     _navigation.RemovePage(page);
-            }
+            }            
         }
+
+        public async Task DisplayAlert(string title, string message, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
+
     }
 }

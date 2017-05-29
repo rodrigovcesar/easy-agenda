@@ -6,15 +6,17 @@
 	<Application.Resources>
         <ResourceDictionary>
             <OnPlatform x:TypeArguments="x:Double" Android="45" iOS="25" WinPhone="25" x:Key="EntryHeight" />
-
+            
+            
             <!-- Cores -->
             <Color x:Key="BackgroundDefault">#212A36</Color>
             <Color x:Key="AppButtonColor">#00A483</Color>
-            <Color x:Key="Background_ListView">#3AB54A</Color>
+            <Color x:Key="Background_ListView">#9BA2AA</Color>
+            <Color x:Key="NavigationColor">#447D9A</Color>
 
             <!-- Barra de navegação -->
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource BackgroundDefault}"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationColor}"/>
                 <Setter Property="BarTextColor" Value="White"/>
             </Style>
 

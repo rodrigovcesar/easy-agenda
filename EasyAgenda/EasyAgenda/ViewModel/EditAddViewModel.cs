@@ -1,12 +1,6 @@
 ﻿using EasyAgenda.Models;
 using EasyAgenda.Services;
 using EasyAgenda.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EasyAgenda.ViewModel
@@ -61,6 +55,9 @@ namespace EasyAgenda.ViewModel
         {            
             Initialize();
             Usuario = usuario;
+            Nome = Usuario.Nome;
+            Email = Usuario.Email;
+            Telefone = Usuario.Telefone;
         }
 
         private void Initialize()

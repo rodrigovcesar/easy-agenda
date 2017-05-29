@@ -24,7 +24,7 @@ namespace EasyAgenda.ViewModel
         public Command LoadListCommand { get; }  
                 
 
-        public MainViewModel()
+        public MainViewModel(INavigation nav): base(nav)
         {
             _azureService = DependencyService.Get<AzureService>();
             _usuarioManager = _azureService.Manager;

@@ -15,12 +15,12 @@ namespace EasyAgenda.ViewModel
     public class LoginViewModel : BaseViewModel
     {
         private AzureService _azureService;
-        private INavigation _navigation;
+        
 
         public ICommand LoginCommand { get; }        
 
    
-        public LoginViewModel(INavigation navigation)
+        public LoginViewModel(INavigation navigation): base(navigation)
         {
             _navigation = navigation;
             _azureService = DependencyService.Get<AzureService>();
@@ -35,20 +35,11 @@ namespace EasyAgenda.ViewModel
             {               
                 var mainPage = new MainPage();
                 await _navigation.PushAsync(mainPage);
-                RemovePageFromStack();
+                RemovePageFromStack<LoginPage>();
                 IsBusy = false;
             }
         }
-
-        private void RemovePageFromStack()
-        {
-            var existingPages = _navigation.NavigationStack.ToList();
-            foreach (var page in existingPages)
-            {
-                if (page.GetType() == typeof(LoginPage))
-                    _navigation.RemovePage(page);
-            }
-        }
+        
 
         public Task<bool> LoginAsync()
         {            

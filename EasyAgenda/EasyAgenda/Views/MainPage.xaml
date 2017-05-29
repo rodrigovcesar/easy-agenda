@@ -25,10 +25,10 @@
                         <BoxView Style="{StaticResource Divisor_BoxView}"/>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="phone.png" HeightRequest="15" WidthRequest="15"/>
-                            <Label Text="(11)2959-8505" Style="{StaticResource Label_Detalhes}"/>
+                            <Label Text="{Binding Telefone}" Style="{StaticResource Label_Detalhes}"/>
                             <BoxView BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" HeightRequest="15"></BoxView>
                             <Image Source="email.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="End" />
-                            <Label Text="teste@teste.com.br" HorizontalOptions="End"></Label>
+                            <Label Text="{Binding Email}" HorizontalOptions="End"></Label>
                         </StackLayout>                        
                     </StackLayout>
                 </controls:MyListItemCell>

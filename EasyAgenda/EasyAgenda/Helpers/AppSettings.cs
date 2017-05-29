@@ -4,7 +4,7 @@ namespace EasyAgenda.Helpers
 {
     public class AppSettings
     {
-        internal static string AZURE_MOBILE_SERVICE_URL = @"https://easyagendamaratona.azurewebsites.net";
-        internal static string LOCAL_STORAGE = "easyagenda1.db";
+        public static string AZURE_MOBILE_SERVICE_URL = @"https://easyagendamaratona.azurewebsites.net";
+        public static string LOCAL_STORAGE = "easyagenda.db";
     }
 }

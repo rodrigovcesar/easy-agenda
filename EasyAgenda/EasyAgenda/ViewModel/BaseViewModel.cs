@@ -5,11 +5,19 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace EasyAgenda.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        protected INavigation _navigation;
+
+        protected BaseViewModel(INavigation nav)
+        {
+            _navigation = nav;
+        }
+
         bool isBusy;
         public bool IsBusy
         {
@@ -34,6 +42,16 @@ namespace EasyAgenda.ViewModel
             storage = value;
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        protected void RemovePageFromStack<T>()
+        {
+            var existingPages = _navigation.NavigationStack.ToList();
+            foreach (var page in existingPages)
+            {
+                if (page.GetType() == typeof(T))
+                    _navigation.RemovePage(page);
+            }
         }
     }
 }

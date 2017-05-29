@@ -30,10 +30,7 @@ namespace EasyAgenda.Services
             try
             {
                 Store = new MobileServiceSQLiteStore(AppSettings.LOCAL_STORAGE);
-                Store.DefineTable<Usuario>();
-
-                if (!CrossConnectivity.Current.IsConnected)
-                    return;
+                Store.DefineTable<Usuario>();                
 
                 await Client.SyncContext.InitializeAsync(Store);
                 _usuarioSyncTable = Client.GetSyncTable<Usuario>();

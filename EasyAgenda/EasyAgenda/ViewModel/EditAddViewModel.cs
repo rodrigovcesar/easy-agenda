@@ -1,5 +1,6 @@
 ﻿using EasyAgenda.Models;
 using EasyAgenda.Services;
+using EasyAgenda.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,13 +51,13 @@ namespace EasyAgenda.ViewModel
             }
         }
 
-        public EditAddViewModel()
+        public EditAddViewModel(INavigation nav) : base(nav)
         {
             Initialize();
             Usuario = new Usuario();         
         }
 
-        public EditAddViewModel(Usuario usuario)
+        public EditAddViewModel(Usuario usuario, INavigation nav): base(nav)
         {            
             Initialize();
             Usuario = usuario;
@@ -75,6 +76,7 @@ namespace EasyAgenda.ViewModel
             Usuario.Email = Email;
             Usuario.Telefone = Telefone;
             await _manager.SaveUsuario(Usuario);
+            RemovePageFromStack<EditAddPage>();
         }
 
         private bool CanExecuteSaveCommand()

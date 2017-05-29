@@ -19,13 +19,13 @@ namespace EasyAgenda.Views
         public EditAddPage()
         {
             InitializeComponent();
-            BindingContext = new EditAddViewModel();
+            BindingContext = new EditAddViewModel(Navigation);
         }
 
         public EditAddPage(Usuario usuario)
         {
             InitializeComponent();
-            BindingContext = new EditAddViewModel(usuario);
+            BindingContext = new EditAddViewModel(usuario, Navigation);
         }
         
     }

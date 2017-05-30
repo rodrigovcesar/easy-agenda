@@ -66,7 +66,7 @@ namespace EasyAgenda.Droid
             string message = intent.Extras.GetString("message");
             if (!string.IsNullOrEmpty(message))
             {
-                createNotification("New todo item!", "Todo item: " + message); return;
+                createNotification("Nova mensagem", "Mensagem: " + message); return;
             }
 
             string msg2 = intent.Extras.GetString("msg");

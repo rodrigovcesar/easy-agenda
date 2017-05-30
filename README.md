@@ -10,7 +10,7 @@ I was wanted to know more about Xamarin.Forms and improve my skills. Now, I'm th
 
 ## Installation
 
-This project was made on Visual Studio Community 2015 and in order to run you need to clone 
+This project was made on Visual Studio Community 2015 with Xamarin. In order to run, you just need to clone this project and restore references. This project was not made (yet) for iOs or UWP.  
 
 ![alt text](https://raw.githubusercontent.com/rodrigovcesar/easy-agenda/master/Telas.png)
 

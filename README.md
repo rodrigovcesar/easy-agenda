@@ -6,7 +6,7 @@ This app uses Mobile Client SDK from Azure and implements login with Facebook an
 
 ## Motivation
 
-I was wanted to know more about Xamarin.Forms and improve my skills. Now, I'm thinking off testing this app on iOs and Windows Phone later to see how custom renders work, by myself. 
+I was wanted to know more about Xamarin.Forms and improve my skills. Now, I'm thinking of testing this app on iOs and Windows Phone later to see how custom renders work. 
 
 ## Installation
 
